@@ -21,13 +21,15 @@ class SIMULATION:
         
         self.robot.Prepare_To_Sense()
         self.robot.Prepare_To_Act()
+        
 
 
     def run(self):
         for t in range(c.RUNTIME):
             p.stepSimulation()
             self.robot.Sense(t)
-            self.robot.Act(t)
+            self.robot.Think()
+            self.robot.Act()
 
             time.sleep(c.TIME_STEP)
 
