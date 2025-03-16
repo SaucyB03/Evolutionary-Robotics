@@ -1,6 +1,6 @@
 import numpy
 
-RUNTIME = 5000
+RUNTIME = 1000
 GRAVITY = -9.8
 TIME_STEP = 1/60
 
