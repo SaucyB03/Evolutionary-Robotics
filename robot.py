@@ -27,7 +27,6 @@ class ROBOT():
 
     def Think(self):
         self.nn.Update()
-        self.nn.Print()
 
     def Act(self):
         for neuronName in self.nn.Get_Neuron_Names():
@@ -35,3 +34,12 @@ class ROBOT():
                 jointName = self.nn.Get_Motor_Neurons_Joint(neuronName).encode("utf-8")
                 desiredAngle = self.nn.Get_Value_Of(neuronName)
                 self.motors[jointName].Set_Value(self.robot, desiredAngle)
+
+    def Get_Fitness(self):
+        stateOfLinkZero = p.getLinkState(self.robot,0)
+        positionOfLinkZero = stateOfLinkZero[0]
+        xCoordinateOfLinkZero = positionOfLinkZero[0]
+
+        f = open("fitness.txt", "w")
+        f.write(str(xCoordinateOfLinkZero))
+        f.close()
