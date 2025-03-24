@@ -9,17 +9,21 @@ from robot import ROBOT
 
 class SIMULATION:
 
-    def __init__(self, directOrGUI):
+    def __init__(self, directOrGUI, solutionID):
         self.directOrGUI = directOrGUI
         if self.directOrGUI == "DIRECT":
             self.physicsClient = p.connect(p.DIRECT)
         elif self.directOrGUI == "GUI":
             self.physicsClient = p.connect(p.GUI)
+        else:
+            print("Not all simulation parameters set")
+            exit()
+
         p.setAdditionalSearchPath(pybullet_data.getDataPath())
         p.setGravity(0,0, c.GRAVITY)
 
         self.world = WORLD()
-        self.robot = ROBOT()
+        self.robot = ROBOT(solutionID)
 
         pyrosim.Prepare_To_Simulate(self.robot.robot)
         
