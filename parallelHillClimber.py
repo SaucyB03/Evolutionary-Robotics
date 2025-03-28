@@ -46,6 +46,7 @@ class PARALLEL_HILL_CLIMBER:
         for p in solutions.values():
             p.Wait_For_Simulation_To_End()
 
+
     def Select(self):
         for key in self.parents.keys():
             if self.parents[key].fitness > self.children[key].fitness:

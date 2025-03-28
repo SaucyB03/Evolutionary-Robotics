@@ -13,11 +13,8 @@ class SIMULATION:
         self.directOrGUI = directOrGUI
         if self.directOrGUI == "DIRECT":
             self.physicsClient = p.connect(p.DIRECT)
-        elif self.directOrGUI == "GUI":
-            self.physicsClient = p.connect(p.GUI)
         else:
-            print("Not all simulation parameters set")
-            exit()
+            self.physicsClient = p.connect(p.GUI)
 
         p.setAdditionalSearchPath(pybullet_data.getDataPath())
         p.setGravity(0,0, c.GRAVITY)
